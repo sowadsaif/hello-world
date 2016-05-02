@@ -1,0 +1,20 @@
+require 'selenium-webdriver'
+driver = Selenium::WebDriver.for :firefox
+driver.manage.timeouts.implicit_wait = 20
+driver.get ("http://www.espncricinfo.com/indian-premier-league-2016/engine/match/980953.html")
+
+
+batting_first_innings = driver.find_element(:css, '#full-scorecard > div:nth-child(2) > div > table:nth-child(1)').text
+puts "#{batting_first_innings}"
+
+batting_first_innings_notbatted = driver.find_element(:class, 'to-bat').text
+puts "#{batting_first_innings_notbatted}"
+
+batting_first_innings_firstplayer = driver.find_element(:css, '#full-scorecard > div:nth-child(2) > div > table:nth-child(1) > tbody > tr:nth-child(2) > td.batsman-name > a').text
+batting_first_innings_firstplayer_run = driver.find_element(:class,'bold').text
+puts "#{batting_first_innings_firstplayer}"
+puts "#{batting_first_innings_firstplayer_run }"
+
+
+
+driver.quit
