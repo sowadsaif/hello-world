@@ -1,0 +1,33 @@
+require 'selenium-webdriver'
+driver = Selenium::WebDriver.for :firefox
+driver.manage.timeouts.implicit_wait = 30
+driver.get ("http://www.espncricinfo.com/bangladesh-v-india-
+
+2015/engine/match/870733.html")
+
+india_innings_batting = driver.find_element(:css,'#full-
+
+scorecard > div:nth-child(2) > div > table:nth-child(1)').text
+puts "#{india_innings_batting}"
+
+bangladeshi_bowling = driver.find_element(:css,'#full-scorecard 
+
+> div:nth-child(2) > div > table:nth-child(3)').text
+puts"#{bangladeshi_bowling}"
+
+bangladesh_batting_innings = driver.find_element(:css,'#full-
+
+scorecard > div:nth-child(2) > div > table:nth-child(4)').text
+puts"#{bangladesh_batting_innings}"
+
+india_bowling = driver.find_element(:css,'#full-scorecard > 
+
+div:nth-child(2) > div > table:nth-child(6)').text
+puts"#{india_bowling}"
+
+man_of_the_match = driver.find_element(:css,'#full-scorecard > 
+
+div:nth-child(3) > div > div > div:nth-child(2)').text
+puts"#{man_of_the_match}"
+
+driver.quit
